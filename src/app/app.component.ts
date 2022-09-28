@@ -7,30 +7,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public title: string = 'Apside';
+  public title: string = 'angularCRM';
 
-  public cssClass:string  = 'green';
 
-  public person = {
-    firstName:'Paul',
-    lastName:'Doe',
-    age:33
-  }
-  public civility:string = 'Mr';
-  public fruits: string[]= ['pomme', 'poire','orange', 'raisin'];
-
-  clicked():void{
-    console.log("clicked !!!")
-    if(this.cssClass == 'green'){
-      this.cssClass = 'red';
-    }else{
-      this.cssClass= 'green';
-    }
-  }
-
-  onSubmit(theForm:NgForm){
-    console.log(theForm);
-    console.log(`civility is ${this.civility}`);
-  }
 
 }

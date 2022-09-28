@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public title: string = 'angularCRM';
 
-
+  public receiveData($event:any):void{
+    console.log($event);
+  }
 
 }

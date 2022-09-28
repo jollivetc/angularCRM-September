@@ -7,3 +7,7 @@
 </div>
 
 <crm-login></crm-login>
+
+<crm-dummy [label]="title" label2="Coucou"
+    (clicked)="receiveData($event)"
+    (cancel)="receiveData($event)"></crm-dummy>

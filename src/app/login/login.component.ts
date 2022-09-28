@@ -9,6 +9,10 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
+  public loginErrorMessages = {
+    required:'login est obligatoire',
+    minlength: 'longueur doit être supérieure à 3'
+  }
 
   constructor() {
     this.loginForm = new FormGroup({

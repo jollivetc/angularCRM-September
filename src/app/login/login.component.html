@@ -1,8 +1,10 @@
 <form [formGroup]="loginForm" (ngSubmit)="logMeIn()">
   <p>
-    <label for="login">Login</label>
-    <input name= "login" type="text"
-      formControlName="login">
+    <mat-form-field>
+      <mat-label for="login">Login</mat-label>
+      <input matInput name= "login" type="text"
+        formControlName="login">
+    </mat-form-field>
     <span *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.invalid">
       <span *ngIf="loginForm.get('login')?.errors?.['required']">
         login est obligatoire
@@ -13,10 +15,13 @@
     </span>
   </p>
   <p>
-    <label for="password">Password</label>
-    <input name="password" type="password"
-        formControlName="password">
+    <mat-form-field>
+      <mat-label for="password">Password</mat-label>
+      <input matInput name="password" type="password"
+          formControlName="password">
+    </mat-form-field>
+
   </p>
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  <button mat-button type="submit" [disabled]="loginForm.invalid" color="primary">Login</button>
 </form>
 

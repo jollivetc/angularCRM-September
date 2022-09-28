@@ -13,7 +13,10 @@ export class LoginComponent implements OnInit {
     required:'login est obligatoire',
     minlength: 'longueur doit être supérieure à 3'
   }
-
+  public passwordErrorMessages = {
+    required: 'password est obligatoire',
+    checkFor$: 'pas de $ dans le mot de passe'
+  }
   constructor() {
     this.loginForm = new FormGroup({
       login: new FormControl('',[Validators.required, Validators.minLength(3)]),

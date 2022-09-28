@@ -4,3 +4,18 @@
     Le nom : {{person.firstName}}
 </span>
 <button (click)="clicked()">click me</button>
+
+<div>
+  <ul>
+    <li *ngFor="let fruit of fruits; let isOdd=odd"
+          [ngClass]="{red : isOdd}">
+      {{fruit}}
+    </li>
+  </ul>
+</div>
+
+<form #theForm="ngForm" (ngSubmit)="onSubmit(theForm)">
+  <input type="text" name="theInput"
+      [(ngModel)]="civility" required>
+  <button type="submit">Submit</button>
+</form>

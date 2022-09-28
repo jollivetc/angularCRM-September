@@ -1,5 +1,5 @@
-import { getCurrencySymbol } from '@angular/common';
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'crm-root',
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Apside';
+  public title: string = 'Apside';
 
   public cssClass:string  = 'green';
 
@@ -16,9 +16,21 @@ export class AppComponent {
     lastName:'Doe',
     age:33
   }
+  public civility:string = 'Mr';
+  public fruits: string[]= ['pomme', 'poire','orange', 'raisin'];
 
   clicked():void{
     console.log("clicked !!!")
+    if(this.cssClass == 'green'){
+      this.cssClass = 'red';
+    }else{
+      this.cssClass= 'green';
+    }
+  }
+
+  onSubmit(theForm:NgForm){
+    console.log(theForm);
+    console.log(`civility is ${this.civility}`);
   }
 
 }

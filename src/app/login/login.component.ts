@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
 import { User } from './model/user';
 
@@ -9,9 +10,10 @@ import { User } from './model/user';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   public loginForm: FormGroup;
+  private subs:Subscription[]=[];
   public loginErrorMessages = {
     required:'login est obligatoire',
     minlength: 'longueur doit être supérieure à 3'
@@ -31,14 +33,20 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  ngOnDestroy(): void {
+    this.subs.forEach(sub=>sub.unsubscribe());
+  }
 
   public logMeIn():void{
-    const user:User = this.authent.authentUser(
+    const subscription = this.authent.authentUser(
               this.loginForm.get('login')?.value,
-              this.loginForm.get('password')?.value);
-    if(user){
-      this.router.navigateByUrl('home');
-    }
+              this.loginForm.get('password')?.value)
+            .subscribe({
+              next:(user:User)=>{ this.router.navigateByUrl('home') },
+              error:(error:Error)=>{ alert(error) },
+              complete:()=>{}
+            });
+    this.subs.push(subscription);
   }
 
 }

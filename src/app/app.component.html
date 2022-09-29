@@ -2,12 +2,17 @@
   <mat-toolbar color="primary">
     <span>{{ title }}</span>
     <span class="fill-space"></span>
-    <span>To right</span>
+    <span>
+      <a [routerLink]="'/home'" matTooltip="home"
+          [routerLinkActive]="'is-active'" mat-icon-button>
+        <mat-icon>home</mat-icon>
+      </a>
+      <a [routerLink]="'/login'" matTooltip="Logout"
+          [routerLinkActive]="'is-active'" mat-icon-button>
+        <mat-icon>logout</mat-icon>
+      </a>
+    </span>
   </mat-toolbar>
 </div>
 
-<crm-login></crm-login>
-
-<crm-dummy [label]="title" label2="Coucou"
-    (clicked)="receiveData($event)"
-    (cancel)="receiveData($event)"></crm-dummy>
+<router-outlet></router-outlet>

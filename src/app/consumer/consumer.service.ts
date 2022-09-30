@@ -28,4 +28,8 @@ export class ConsumerService {
     }
     return this.http.post<Consumer>('/api/consumers',consumer);
   }
+
+  deleteConsumer(id:number):Observable<Consumer>{
+    return this.http.delete<Consumer>(`/api/consumers/${id}`)
+  }
 }

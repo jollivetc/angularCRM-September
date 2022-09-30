@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private subs: Subscription[]= [];
 
+  public phoneNumber = "0123456789";
+
   constructor(private demoObservableService: DemoObservableService) { }
 
   ngOnInit(): void {
@@ -28,5 +30,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
       this.subs.forEach(sub=>sub.unsubscribe());
+
   }
 }

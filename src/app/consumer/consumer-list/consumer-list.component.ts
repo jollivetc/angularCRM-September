@@ -10,12 +10,17 @@ import { Consumer } from '../model/consumer';
 })
 export class ConsumerListComponent implements OnInit {
 
+  public searchField:string='';
   public consumers?:Observable<Consumer[]>;
 
   constructor(private consumerService:ConsumerService) { }
 
   ngOnInit(): void {
     this.consumers = this.consumerService.getConsumers();
+  }
+
+  search():void{
+    this.consumers = this.consumerService.searchConsumers(this.searchField);
   }
 
 }

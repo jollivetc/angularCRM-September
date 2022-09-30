@@ -10,6 +10,6 @@
     <td>{{consumer.lastname}}</td>
     <td>{{consumer.email}}</td>
     <td>{{consumer.phone | phone}}</td>
-    <td></td>
+    <td> <a [routerLink]="['/consumer',consumer.id]" mat-icon-button><mat-icon>edit</mat-icon></a> </td>
   </tr>
 </table>
